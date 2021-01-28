@@ -1,0 +1,16 @@
+{
+  "name": "tyutorieol",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "r": "node index.js"
+  },
+  "dependencies": {
+    "ascii-table": "0.0.9",
+    "config.json": "0.0.4",
+    "discord.js": "^12.5.1",
+    "fs": "0.0.1-security",
+    "quick.db": "^7.1.3"
+  }
+}
