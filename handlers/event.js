@@ -8,5 +8,5 @@ module.exports=(client)=>{
             client.on(eName,evt.bind(null,client));
         };
     };
-    ["guild", "client"].forEach(x=>load(x))
+    ["client"].forEach(x=>load(x))
 };
