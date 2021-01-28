@@ -1,0 +1,24 @@
+const db = require('quick.db');
+const ms = require('parse-ms');
+
+module.exports = {
+    name: "일",
+    description: "Work your a** off",
+
+    async run (client, message, args) {
+        let user = message.author;
+        let timeout = 60000;
+        let author = await db.fetch(`worked_${message.guild.id}_${user.id}`);
+
+        if(author !== null && timeout - (Date.now() - author) > 0){
+            let time = ms(timeout - (Date.now() - author));
+            return message.channel.send(`${time.minutes}분 ${time.seconds}초 동안 다시 작업 할 수 없습니다.`)
+        } else {
+            let amount = Math.floor(Math.random() * 80) + 1;
+            db.add(`money_${message.guild.id}_${user.id}`, amount)
+            db.set(`worked_${message.guild.id}_${user.id}`, Date.now())
+
+            return message.reply(`일을 하여 ${amount} 코인을 얻었습니다!`)
+        }
+    }
+}
